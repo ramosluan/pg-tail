@@ -4,7 +4,7 @@ use std::io::{BufRead, BufReader};
 
 fn main() {
     let path = env::args().nth(1).unwrap_or_else(|| "/var/log/postgresql/postgresql.log".into());
-    let keep = env::var("LINES").ok().and_then(|s| s.parse().ok()).unwrap_or(120);
+    let keep = env::var("LINES").ok().and_then(|s| s.parse().ok()).unwrap_or(140);
     let f = File::open(&path).expect("abrir log");
     let mut lines: Vec<String> = Vec::new();
     for line in BufReader::new(f).lines().flatten() {
